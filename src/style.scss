@@ -1,0 +1,78 @@
+$ballCount: 20;
+
+body {
+  background: #000;
+  height: 100vh;
+  overflow: hidden;
+}
+#ui {
+  .ball {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    filter: blur(8px) contrast(10);
+    
+    @for $i from 1 through $ballCount {
+      &:nth-child(#{$i}) {
+        animation: horizontal 1600ms infinite ease-in-out #{$i * 5}ms;
+        
+        .ball_inner {
+          box-shadow: 10px 10px 40px 5px rgba(255, 0, 0, 0.1);
+          animation: vertical 200ms infinite alternate ease-in-out #{$i * 5}ms;
+        }
+      }
+    }
+    
+    &_inner {
+      width: 5px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      background: orange;
+      border-radius: 100%;
+    }
+  }
+}
+
+@keyframes horizontal {
+  0% {
+    transform: translateX(0px);
+  }
+  10% {
+    transform: translateX(0px);
+  }
+  20% {
+    transform: translateX(-150px);
+  }
+  30% {
+    transform: translateX(0px);
+  }
+  40% {
+    transform: translateX(150px);
+  }
+  50% {
+    transform: translateX(160px);
+  }
+  60% {
+    transform: translateX(100px);
+  }
+  70% {
+    transform: translateX(0px);
+  }
+  80% {
+    transform: translateX(0px);
+  }
+  90% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes vertical {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}
